@@ -1,0 +1,14 @@
+import jwt from 'jsonwebtoken'
+import secretkey from '../jwtConfig.js'
+
+function generateToken(user) { 
+
+    const payload = {
+        id:user._id,
+        email:user.email
+    }
+
+    return jwt.sign(payload,secretkey,{expiresIn:'24h'})
+}
+
+export default generateToken
